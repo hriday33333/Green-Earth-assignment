@@ -103,8 +103,13 @@
 
     <!-- ? main section section -->
     <section class="md:w-11/12 w-[350px] mx-auto py-10 md:grid md:grid-cols-12 grid grid-cols-2 gap-3">
-        <section id="tital-box" class="bg-slate-400 md:col-span-2">
-            <h1>title</h1>
+        <section id="tital-box" class="bg-slate-400 md:col-span-2 p-3 ">
+            <h1 class="text-xl font-semibold">Categories</h1>
+            <ul class="mt-2 space-y-2">
+                <li class="hover:bg-green-800 cursor-pointer">All Trees</li>
+                <li class="hover:bg-green-800 cursor-pointer">Fruit Trees</li>
+                <li class="hover:bg-green-800 cursor-pointer">Flowering Trees</li>
+            </ul>
         </section>
         <section id="container-box" class="bg-blue-400 md:col-span-8">
             <h1>container-box</h1>
@@ -120,9 +125,32 @@
         <h1 class="text-3xl font-semibold">About the Campaign</h1>
     </div>
 
+    <section class=" md:w-[900px] md:mx-auto mt-10 md:grid md:grid-cols-2 items-center  gap-4">
+        <div class="">
+            <img class="md:w-full w-[200px] mx-auto" src="./assets/about.png" alt="">
+        </div>
+        <div>
+            <p class="md:text-left text-center text-gray-500 mt-5">Green Earth is a global tree plantation initiative
+                dedicated to
+                fighting
+                climate
+                change. Since our start,
+                we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests, create
+                habitats for wildlife, and combat global warming.</p>
+
+            <ul class="list-disc list-inside md:text-left text-center mt-5 text-gray-500 ">
+                <li>Restoration of natural habitats</li>
+                <li>Improvement of air quality
+                    <!-- second level -->
+                </li>
+                <li>Support for local communities</li>
+            </ul>
+        </div>
+    </section>
 
 
 
+    <script src="./index.js"></script>
 </body>
 
 </html>
