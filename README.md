@@ -30,8 +30,6 @@ Purpose: Creates a new array by transforming each element of the original array.
 Return value: A new array of the same length.
 Use case: When you want to transform data without modifying the original array.
 
-
-
 1. forEach()
 
 Purpose: Executes a function on each element of an array.
