@@ -53,6 +53,7 @@ const loadPlantByCategory = (plantId) => {
 
 const showPlantCategory = (plantTree) => {
     console.log(plantTree)
+    plantBox.innerHTML = ""
     plantTree.forEach(tree => {
         plantBox.innerHTML += `  <div class=" p-2 bg-white rounded-xl shadow-xl space-x-1">
                     <div class="md:w-[230px] md:h-[130px] md:overflow-hidden ">
@@ -75,4 +76,60 @@ const showPlantCategory = (plantTree) => {
 
 }
 
+
 loadCategory()
+
+
+
+const plantBoxs = document.getElementById("plant-box");
+const loadBtn = document.getElementById("load-btn");
+
+// API থেকে ডাটা লোড করা
+const loadPlants = () => {
+  fetch("https://openapi.programming-hero.com/api/plants") // এখানে আপনার JSON ফাইল / API URL দিতে হবে
+    .then((res) => res.json())
+    .then((data) => {
+      displayPlants(data.plants);
+    })
+    .catch((err) => console.log(err));
+};
+
+// গাছ দেখানোর ফাংশন
+const displayPlants = (plants) => {
+  plantBoxs.innerHTML = ""; // আগের ডাটা ক্লিয়ার
+
+  plants.forEach((tree) => {
+    const card = document.createElement("div");
+
+    card.innerHTML = `
+      <div class="p-2 bg-white rounded-xl shadow-xl space-x-1">
+          <div class="md:w-[230px] md:h-[130px] md:overflow-hidden">
+              <img class="md:w-full md:h-full md:object-cover rounded-t-md" src="${tree.image}" alt="${tree.name}">
+          </div>
+          <h1 class="text-xl font-bold underline">${tree.name}</h1>
+          <p class="text-sm mt-3">${tree.description}</p>
+          <div class="md:flex md:justify-between mt-3">
+              <div class="text-sm font-semibold border border-b-teal-400 rounded-md text-green-700 p-1">
+                  ${tree.category}
+              </div>
+              <div class="text-sm font-semibold">${tree.price} ৳</div>
+          </div>
+          <button class="bg-green-700 w-full h-10 rounded-[50px] mt-3 text-white font-semibold">
+              Add to Cart
+          </button>
+      </div>
+    `;
+
+    plantBox.appendChild(card);
+  });
+};
+
+// বাটনে ক্লিক করলে ডাটা আসবে
+loadBtn.addEventListener("click", loadPlants);
+
+// ডিফল্ট ভাবে রিলোড হলে ডাটা আসবে
+window.addEventListener("DOMContentLoaded", loadPlants);
+
+
+
+

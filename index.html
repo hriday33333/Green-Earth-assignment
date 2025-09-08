@@ -105,7 +105,7 @@
     <section class="md:w-11/12 w-[350px] mx-auto py-10 md:grid md:grid-cols-12 grid grid-cols-2 gap-3">
         <section id="tital-box" class=" md:col-span-2 p-3 ">
             <h1 class="text-xl font-semibold">Categories</h1>
-            <h1 class="hover:bg-green-800 cursor-pointer">All Tree</h1>
+            <h1 id="load-btn" class="hover:bg-green-800 cursor-pointer">All Tree</h1>
             <ul id="category-container" class="mt-2 space-y-2">
 
             </ul>
@@ -120,7 +120,7 @@
             </div>
         </section>
         <section id="card-box" class="bg-red-500 md:col-span-2">
-            <h1>card box</h1>
+            <h1 class="text-xl font-semibold">Your Cart</h1>
         </section>
     </section>
 
@@ -154,8 +154,62 @@
     </section>
 
 
+    <section class=" md:w-[1440px] mt-10 mx-auto bg-emerald-100">
+        <h1 class="text-center text-2xl font-bold md:p-10 p-5">Our Impact</h1>
+        <section
+            class="md:w-[1440px]  mx-auto bg-emerald-100 md:h-[330px] h-[130px] mt-10 flex justify-between md:items-center md:p-20 p-5 items-center ">
+            <div class=" bg-white md:w-[400px] w-35 md:h-[130px] text-center items-center rounded-xl">
+                <h1 class=" text-green-700 text-3xl font-semibold items-center  md:mt-5">500K+</h1>
+                <p class="">Trees Planted</p>
+            </div>
+            <div class=" bg-white md:w-[400px] w-35 md:h-[130px] text-center items-center rounded-xl">
+                <h1 class=" text-green-700 text-3xl font-semibold items-center  md:mt-5">120+</h1>
+                <p class="">Communities Involved </p>
+            </div>
+            <div class=" bg-white md:w-[400px] w-35 md:h-[130px] text-center items-center rounded-xl">
+                <h1 class=" text-green-700 text-3xl font-semibold items-center  md:mt-5">30+</h1>
+                <p class="">Countries Reached</p>
+            </div>
+        </section>
+    </section>
 
-    <script src="./index.js"></script>
+
+
+    <section class="md:w-[1440px] md:h-[500px] h-[280px]  mx-auto bg-[#15803D] md:mt-0 mt-7">
+        <div class="">
+            <h1 class="text-center text-4xl md:p-10 text-white font-bold">Plant a Tree Today</h1>
+        </div>
+        <section class=" md:flex justify-center items-center md:mt-15 ">
+            <div class=" md:w-[600px]  md:h-[280px] h-[280px] bg-[#166534] rounded-xl">
+                <div class="p-10 space-y-3">
+                    <input type="text" placeholder="Your Name" class="input w-full" />
+                    <input type="text" placeholder="Number of Trees" class="input w-full" />
+                    <input type="text" class="input w-full" placeholder="Number of Trees" list="browsers" />
+                    <datalist id="browsers">
+                        <option value="Chrome"></option>
+                        <option value="Firefox"></option>
+                        <option value="Safari"></option>
+                        <option value="Opera"></option>
+                        <option value="Edge"></option>
+                    </datalist>
+                    <button class=" bg-yellow-300 w-full h-10 rounded-lg text-green-700">Donate Now</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <footer>
+        <footer
+            class="footer sm:footer-horizontal footer-center bg-base-300 md:w-[1440px]  mx-auto text-base-content p-4  bg-[#166534] ">
+            <aside>
+                <p class="text-white">© 2025 Green Earth. All Rights Reserved.</p>
+            </aside>
+        </footer>
+    </footer>
+
+    <script src=" ./index.js">
+    </script>
 </body>
 
 </html>
