@@ -1,5 +1,6 @@
 
 const categoryContainer = document.getElementById("category-container")
+const plantBox = document.getElementById('plant-box')
 
 const loadCategory = () =>{
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -29,12 +30,49 @@ const showCategory = (addCategory) => {
                 li.classList.remove('bg-green-800')
             })
             if(e.target.localName === 'li') {
-                console.log(e.target)
+                console.log(e.target.id)
                 e.target.classList.add('bg-green-800')
+                loadPlantByCategory(e.target.id)
             }
         })
 }
 
+const loadPlantByCategory = (plantId) => {
+    console.log(plantId)
+    fetch(`https://openapi.programming-hero.com/api/category/${plantId}`)
+    .then(res => res.json())
+    .then(data => {
+        
+        showPlantCategory(data.plants)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 
+}
+
+const showPlantCategory = (plantTree) => {
+    console.log(plantTree)
+    plantTree.forEach(tree => {
+        plantBox.innerHTML += `  <div class=" p-2 bg-white rounded-xl shadow-xl space-x-1">
+                    <div class="md:w-[230px] md:h-[130px] md:overflow-hidden ">
+                        <img class="md:w-full md:h-full md:object-cover  rounded-t-md " src="${tree.image} "
+                            alt="">
+                    </div>
+                    <h1 class="text-xl font-bold underline">${tree.name} </h1>
+                    <p class="text-sm mt-3">${tree.description} </p>
+                    <div class="md:flex md:justify-between mt-3">
+                        <div class="text-sm font-semibold border border-b-teal-400 rounded-md text-green-700 p-1">
+                            ${tree.category}
+                        </div>
+                        <div class="text-sm font-semibold">${tree.price} </div>
+                    </div>
+                    <button class="bg-green-700 w-full h-10 rounded-[50px] mt-3 text-white font-semibold">Add to
+                        Cart</button>
+                </div>
+`
+    })
+
+}
 
 loadCategory()
