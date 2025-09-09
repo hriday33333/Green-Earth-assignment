@@ -84,7 +84,7 @@ loadCategory()
 const plantBoxs = document.getElementById("plant-box");
 const loadBtn = document.getElementById("load-btn");
 
-// API থেকে ডাটা লোড করা
+
 const loadPlants = () => {
   fetch("https://openapi.programming-hero.com/api/plants") // এখানে আপনার JSON ফাইল / API URL দিতে হবে
     .then((res) => res.json())
@@ -102,16 +102,6 @@ const loadWordDetail =async(id) => {
      displayWordDetail(details.plants)
 }
 
-
-// "plants": {
-// "id": 3,
-// "image": "https://i.ibb.co.com/xt98PwZq/jackfruit-min.jpg",
-// "name": "Jackfruit Tree",
-// "description": "A large tropical tree that bears the world’s biggest fruit, the jackfruit. Its sweet and aromatic flesh is both nutritious and filling, and the tree itself provides generous shade.",
-// "category": "Fruit Tree",
-// "price": 800
-// }
-// }
 
 
 
@@ -135,9 +125,9 @@ const displayWordDetail = (plant) => {
 
 
 
-// গাছ দেখানোর ফাংশন
+
 const displayPlants = (plants) => {
-  plantBoxs.innerHTML = ""; // আগের ডাটা ক্লিয়ার
+  plantBoxs.innerHTML = "";
 
   plants.forEach((tree) => {
     const card = document.createElement("div");
@@ -165,10 +155,10 @@ const displayPlants = (plants) => {
   });
 };
 
-// বাটনে ক্লিক করলে ডাটা আসবে
+
 loadBtn.addEventListener("click", loadPlants);
 
-// ডিফল্ট ভাবে রিলোড হলে ডাটা আসবে
+
 window.addEventListener("DOMContentLoaded", loadPlants);
 
 
