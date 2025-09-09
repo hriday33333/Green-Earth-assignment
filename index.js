@@ -188,7 +188,7 @@ const showCards = (cardTotal) => {
         <div class="flex justify-between items-center md:p-5 p-2 md:bg-emerald-100 rounded-xl shadow-lg mt-3">
             <div>
                 <h1>${cardPrice.title}</h1>
-                <p>${cardPrice.price}</p>
+                <p>${cardPrice.price} </p>
             </div>
             <button onclick="removeCard(${index})" class="btn btn-xs">❌</button>
         </div>
