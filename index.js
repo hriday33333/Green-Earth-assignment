@@ -1,6 +1,10 @@
 
 const categoryContainer = document.getElementById("category-container")
 const plantBox = document.getElementById('plant-box')
+const addCardBox = document.getElementById('addCard-box')
+
+
+let cardTotal = []
 
 const loadCategory = () =>{
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -133,7 +137,7 @@ const displayPlants = (plants) => {
     const card = document.createElement("div");
 
     card.innerHTML = `
-      <div class="p-2 bg-white rounded-xl shadow-xl space-x-1">
+      <div id="${tree.id} " class="p-2 bg-white rounded-xl shadow-xl space-x-1">
           <div class="md:w-[230px] md:h-[130px] md:overflow-hidden">
               <img class="md:w-full md:h-full md:object-cover rounded-t-md" src="${tree.image}" alt="${tree.name}">
           </div>
@@ -155,6 +159,48 @@ const displayPlants = (plants) => {
   });
 };
 
+
+
+plantBox.addEventListener('click', (e) => {
+    if (e.target.innerText === 'Add to Cart') {
+        alert("আপনি Add to Cart এ ক্লিক করেছেন!")  // ✅ এখানে এলার্ট যোগ হলো
+        handelCard(e)
+    }
+})
+
+const handelCard = (e) => {
+    const title = e.target.parentNode.children[1].innerText
+    const price = e.target.parentNode.children[3].children[1].innerText
+    cardTotal.push({
+        title: title,
+        price: price,
+    })
+    showCards(cardTotal)
+}
+
+const showCards = (cardTotal) => {
+    addCardBox.innerHTML = ""
+    cardTotal.forEach((cardPrice, index) => {
+        addCardBox.innerHTML += `
+        <div class="flex justify-between items-center md:p-5 p-2 md:bg-emerald-100 rounded-xl shadow-lg mt-3">
+            <div>
+                <h1>${cardPrice.title}</h1>
+                <p>${cardPrice.price}</p>
+            </div>
+            <button onclick="removeCard(${index})" class="btn btn-xs">❌</button>
+        </div>
+        `
+    })
+}
+
+// ❌ বাটনে ক্লিক করলে কার্ড মুছে যাবে
+const removeCard = (index) => {
+    cardTotal.splice(index, 1)   // array থেকে index অনুযায়ী রিমুভ
+    showCards(cardTotal)         // আবার রেন্ডার করে দেখানো
+}
+// const cardDelete = (deleteId) => {
+//     console.log(deleteId)
+// }
 
 loadBtn.addEventListener("click", loadPlants);
 
