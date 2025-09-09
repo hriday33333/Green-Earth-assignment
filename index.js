@@ -2,6 +2,7 @@
 const categoryContainer = document.getElementById("category-container")
 const plantBox = document.getElementById('plant-box')
 const addCardBox = document.getElementById('addCard-box')
+const totalCount = document.getElementById('total-count')
 
 
 let cardTotal = []
@@ -90,7 +91,7 @@ const loadBtn = document.getElementById("load-btn");
 
 
 const loadPlants = () => {
-  fetch("https://openapi.programming-hero.com/api/plants") // এখানে আপনার JSON ফাইল / API URL দিতে হবে
+  fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => {
       displayPlants(data.plants);
@@ -163,7 +164,8 @@ const displayPlants = (plants) => {
 
 plantBox.addEventListener('click', (e) => {
     if (e.target.innerText === 'Add to Cart') {
-        alert("আপনি Add to Cart এ ক্লিক করেছেন!")  // ✅ এখানে এলার্ট যোগ হলো
+        const title = e.target.parentNode.children[1].innerText  
+        alert(` "${title}" has been added to the cart`) 
         handelCard(e)
     }
 })
@@ -176,6 +178,7 @@ const handelCard = (e) => {
         price: price,
     })
     showCards(cardTotal)
+    updateTotal() 
 }
 
 const showCards = (cardTotal) => {
@@ -193,10 +196,20 @@ const showCards = (cardTotal) => {
     })
 }
 
-// ❌ বাটনে ক্লিক করলে কার্ড মুছে যাবে
+
 const removeCard = (index) => {
-    cardTotal.splice(index, 1)   // array থেকে index অনুযায়ী রিমুভ
-    showCards(cardTotal)         // আবার রেন্ডার করে দেখানো
+    cardTotal.splice(index, 1)   
+    showCards(cardTotal)         
+    updateTotal()              
+}
+
+
+const updateTotal = () => {
+    let total = 0
+    cardTotal.forEach(item => {
+        total += parseFloat(item.price) 
+    })
+    totalCount.innerText = `Total: ৳${total}`
 }
 // const cardDelete = (deleteId) => {
 //     console.log(deleteId)
